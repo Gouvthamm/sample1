@@ -1,0 +1,46 @@
+<p>signupcomp works!</p>
+<form #signupform="ngForm">
+    <fieldset>
+        <legend>signup</legend>
+        <!-- email -->
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="text" required [(ngModel)]="user.email" id="inputEmail" name="email">
+        </div>
+        <!-- password -->
+        <div ngModelGroup="password">
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="text" required [(ngModel)]="user.password.pwd" name="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="
+                confirmPassword">Confirmpass</label>
+                <input type="text" required [(ngModel)]="user.password.confirmpwd" name="confirmPwd">
+            </div>
+        </div>
+
+        <!-- select gender -->
+        <div class="forms-group">
+            <label for="select">Gender</label>
+            <select  id="select" [(ngModel)]="user.gender" name="gender">
+                <option  *ngFor="let g of gender" [value]="g">{{g}}</option>
+            </select>
+        </div>
+
+        <!-- terms and conditions -->
+        <div class="form-group checkbox">
+            <label for="">
+                <input type="checkbox" name="terms" [(ngModel)]="user.terms">confirm that you read t&c
+            </label>
+        </div>
+        <!-- Buttons -->
+        <div class="form-group">
+            <button type="reset">cancel</button>
+            <input type="submit" [disabled]="!signupform.valid ">
+        </div>
+    </fieldset>
+</form>
+
+{{user | json}}
